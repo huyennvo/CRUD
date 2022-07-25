@@ -1,0 +1,47 @@
+table {
+  margin-top: -20px;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+#filterForm  {
+  position: absolute;
+  right: 200px;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .add {
+  margin-left: 90.2%;
+} */
+
+/* .searchh {
+  margin-left: 81%;
+} */
+
+header {
+  text-align: center;
+  text-decoration: solid;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.submitt {
+  left: 50%;
+}
+
+.modal-content {
+  padding: 30px;
+}
+
+#addtn {
+  position: absolute;
+  right: 200px;
+}

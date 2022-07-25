@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thong tin san pham</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./crud.js"></script>
+  </head>
+  <body>
+    <form id="filterForm" action="">
+        <label for="filer">Filter by</label>
+        <select name="field" id="field">
+          <option value="id">ID</option>
+          <option value="name">Name</option>
+          <option value="price">Price</option>
+          <option value="description">Description</option>
+          <option value="quantity">Quantity</option>
+          <option value="product_site">Product site</option>
+          <option value="created_by">Created by</option>
+        </select>
+        <input id="searchValue" name="searchValue" type="text">
+        <button type="submit" class="filerbtn btn btn-primary">Search</button>
+        <button type="submit" class="filerbtn btn btn-secondary">Cancle</button>
+    </form>
+    <br>
+    <br>
+      <button
+        type="button"
+        id="addtn"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#add">
+        ADD+
+    </button>
+    <br>
+    <br>
+    <header>DANH SÁCH SẢN PHẨM</header>
+    <div id="table">
+      <div>
+        <!-- <input type="text" class="searchh" placeholder="Search" /> -->
+      </div>
+      <br />
+
+      <!-- <button type="button" class=" add btn btn-primary" id="addbtn" onclick="addInfo()">ADD+</button> -->
+
+      <br />
+      <div>
+        <table style="width: 80%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Product site</th>
+              <th>Created by</th>
+              <th colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="load-du-lieu"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Button to Open the Modal -->
+
+      <!-- modal add product -->
+      <div class="modal fade" id="add" data-form="add">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Nhập thông tin</h4>
+              <button type="button" id="btnClose-add" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+            <form id="formInput-add">
+              <div class="form-group row">
+                <label class="col-md-3" for="inputName">Name</label>
+                <input
+                  type="text"
+                  class="col-md-9 form-control"
+                  id="inputName"
+                  name="name"
+                  aria-describedby="emailHelp"
+                  placeholder="Tên sản phẩm"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputPrice">Price</label>
+                <input
+                  type=""
+                  name="price"
+                  class="col-md-9 form-control"
+                  id="inputPrice"
+                  placeholder="Giá thành"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputDescription"
+                  >Description</label
+                >
+                <input
+                  type=""
+                  name="description"
+                  class="col-md-9 form-control"
+                  id="inputDescription"
+                  placeholder="Mô tả"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputQuantity">Quantity</label>
+                <input
+                  type=""
+                  name="quantity"
+                  class="col-md-9 form-control"
+                  id="inputQuantity"
+                  placeholder="Số lượng"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputProductSite"
+                  >Product site</label
+                >
+                <input
+                  type=""
+                  name="product_site"
+                  class="col-md-9 form-control"
+                  id="inputProductSite"
+                  placeholder="Địa điểm"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputCreatedBy">Created by</label>
+                <input
+                  type=""
+                  name="created_by"
+                  class="col-md-9 form-control"
+                  id="inputCreatedBy"
+                  placeholder="Tên đơn vị"
+                />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="btnSubmit" class="btn btn-primary">
+                  Add
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancle
+                </button>
+              </div>
+            </form>
+
+            <!-- Modal footer -->
+          </div>
+        </div>
+      </div>
+
+      <!-- modal edit product -->
+      <div class="modal fade" id="edit" data-form="edit">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Nhập thông tin</h4>
+              <button type="button" id="btnClose-edit" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <form id="formInput-edit">
+              <div class="form-group row">
+                <label class="col-md-3" for="inputName">Name</label>
+                <input
+                  type="text"
+                  class="col-md-9 form-control"
+                  id="inputName-edit"
+                  aria-describedby="emailHelp"
+                  placeholder="Tên sản phẩm"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputPrice">Price</label>
+                <input
+                  type=""
+                  class="col-md-9 form-control"
+                  id="inputPrice-edit"
+                  placeholder="Giá thành"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputDescription"
+                  >Description</label
+                >
+                <input
+                  type=""
+                  class="col-md-9 form-control"
+                  id="inputDescription-edit"
+                  placeholder="Mô tả"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputQuantity">Quantity</label>
+                <input
+                  type=""
+                  class="col-md-9 form-control"
+                  id="inputQuantity-edit"
+                  placeholder="Số lượng"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputProductSite"
+                  >Product site</label
+                >
+                <input
+                  type=""
+                  class="col-md-9 form-control"
+                  id="inputProductSite-edit"
+                  placeholder="Địa điểm"
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3" for="inputCreatedBy">Created by</label>
+                <input
+                  type=""
+                  class="col-md-9 form-control"
+                  id="inputCreatedBy-edit"
+                  placeholder="Tên đơn vị"
+                />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="btnSubmit" class="btn btn-primary" onclick=>
+                  Save changes
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancle
+                </button>
+              </div>
+            </form>
+
+            <!-- Modal footer -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
